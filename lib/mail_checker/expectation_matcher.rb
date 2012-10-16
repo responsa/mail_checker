@@ -40,7 +40,7 @@ module MailChecker
     end
 
     def to_regexp(values)
-      values.map { |v| Regexp.new(v) }
+      values.map { |v| v.is_a?(String) ? Regexp.new(Regexp.escape(v)) : Regexp.new(v) }
     end
   end
 end
